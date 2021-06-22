@@ -3,5 +3,7 @@ Flask-SQLAlchemy==2.5.1
 gunicorn==20.1.0
 psycopg2-binary==2.8.6
 stripe>=2.48.0,<3.0
-Flask-Migrate==3.0.1
+Flask-Migrate==2.5.1
 boto3==1.17.98
+Flask-Script==2.0.6
+Flask-Restx==0.4.0

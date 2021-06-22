@@ -1,5 +1,5 @@
 import os
-
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 from flask import (
     Flask,
@@ -10,10 +10,10 @@ from flask import (
     url_for
 )
 from flask_migrate import Migrate
-from .models import db
 
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
+db = SQLAlchemy(app)
 db.init_app(app)
 
 migrate = Migrate(app, db)

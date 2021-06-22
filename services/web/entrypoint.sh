@@ -13,4 +13,7 @@ fi
 
 python manage.py create_db
 
+flask db init
+flask db migrate
+flask db update
 exec "$@"
