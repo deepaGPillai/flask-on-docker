@@ -9,23 +9,14 @@ from flask import (
     redirect,
     url_for
 )
-from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+from .models import db
 
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
-db = SQLAlchemy(app)
+db.init_app(app)
 
-
-class User(db.Model):
-    __tablename__ = "users"
-
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(128), unique=True, nullable=False)
-    active = db.Column(db.Boolean(), default=True, nullable=False)
-
-    def __init__(self, email):
-        self.email = email
-
+migrate = Migrate(app, db)
 
 @app.route("/")
 def hello_world():
